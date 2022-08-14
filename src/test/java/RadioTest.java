@@ -5,7 +5,7 @@ public class RadioTest {
 
     @Test
     public void setCurrentVolumeUp() {
-        Radio rad = new Radio(0, 9, 7);
+        Radio rad = new Radio(7, 1, 0, 100, 0, 9);
 
         rad.increaseVolume();
 
@@ -14,7 +14,7 @@ public class RadioTest {
 
     @Test
     public void setCurrentVolumeDown() {
-        Radio rad = new Radio(0, 9, 7);
+        Radio rad = new Radio(7, 1, 0, 100, 0, 9);
 
         rad.reduceVolume();
 
@@ -23,7 +23,7 @@ public class RadioTest {
 
     @Test
     public void setNextVolume() {
-        Radio rad = new Radio(0, 9, 100);
+        Radio rad = new Radio(100, 1, 0, 100, 0, 9);
 
         rad.increaseVolume();
 
@@ -32,7 +32,7 @@ public class RadioTest {
 
     @Test
     public void setPrevVolume() {
-        Radio rad = new Radio(0, 9, 0);
+        Radio rad = new Radio(0, 1, 0, 100, 0, 9);
 
         rad.reduceVolume();
 
@@ -41,9 +41,8 @@ public class RadioTest {
 
     @Test
     public void setNextStation() {
-        Radio rad = new Radio(0, 9, 7);
+        Radio rad = new Radio(1, 1, 0, 100, 0, 9);
 
-        rad.currentStation = 1;
         rad.next();
 
         Assertions.assertEquals(2, rad.getCurrentStation());
@@ -51,9 +50,8 @@ public class RadioTest {
 
     @Test
     public void setPrevStation() {
-        Radio rad = new Radio(0, 9, 7);
+        Radio rad = new Radio(1, 5, 0, 100, 0, 9);
 
-        rad.currentStation = 5;
         rad.prev();
 
         Assertions.assertEquals(4, rad.getCurrentStation());
@@ -61,9 +59,8 @@ public class RadioTest {
 
     @Test
     public void setStAfter9() {
-        Radio rad = new Radio(0, 9, 7);
+        Radio rad = new Radio(1, 9, 0, 100, 0, 9);
 
-        rad.currentStation = 9;
         rad.next();
 
         Assertions.assertEquals(0, rad.getCurrentStation());
@@ -71,9 +68,8 @@ public class RadioTest {
 
     @Test
     public void setStPrev0() {
-        Radio rad = new Radio(0, 9, 7);
+        Radio rad = new Radio(1, 0, 0, 100, 0, 9);
 
-        rad.currentStation = 0;
         rad.prev();
 
         Assertions.assertEquals(9, rad.getCurrentStation());
@@ -83,7 +79,7 @@ public class RadioTest {
     public void playPrevStation() {
         Radio rad = new Radio();
 
-        rad.currentStation = 2;
+        rad.setCurrentStation(2);
         rad.prev();
 
         Assertions.assertEquals(1, rad.getCurrentStation());
@@ -93,7 +89,7 @@ public class RadioTest {
     public void playNextStation() {
         Radio rad = new Radio();
 
-        rad.currentStation = 2;
+        rad.setCurrentStation(2);
         rad.next();
 
         Assertions.assertEquals(3, rad.getCurrentStation());
@@ -103,7 +99,7 @@ public class RadioTest {
     public void playAfterMax() {
         Radio rad = new Radio();
 
-        rad.currentStation = 9;
+        rad.setCurrentStation(9);
         rad.next();
 
         Assertions.assertEquals(0, rad.getCurrentStation());
@@ -113,7 +109,7 @@ public class RadioTest {
     public void playPrevMin() {
         Radio rad = new Radio();
 
-        rad.currentStation = 0;
+        rad.setCurrentStation(0);
         rad.prev();
 
         Assertions.assertEquals(9, rad.getCurrentStation());
