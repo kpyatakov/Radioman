@@ -5,8 +5,9 @@ public class RadioTest {
 
     @Test
     public void setCurrentVolumeUp() {
-        Radio rad = new Radio(0, 9, 7);
+        Radio rad = new Radio(9);
 
+        rad.currentVolume = 7;
         rad.increaseVolume();
 
         Assertions.assertEquals(8, rad.getCurrentVolume());
@@ -14,8 +15,9 @@ public class RadioTest {
 
     @Test
     public void setCurrentVolumeDown() {
-        Radio rad = new Radio(0, 9, 7);
+        Radio rad = new Radio(9);
 
+        rad.currentVolume = 7;
         rad.reduceVolume();
 
         Assertions.assertEquals(6, rad.getCurrentVolume());
@@ -23,8 +25,9 @@ public class RadioTest {
 
     @Test
     public void setNextVolume() {
-        Radio rad = new Radio(0, 9, 100);
+        Radio rad = new Radio(9);
 
+        rad.currentVolume = 100;
         rad.increaseVolume();
 
         Assertions.assertEquals(100, rad.getCurrentVolume());
@@ -32,8 +35,9 @@ public class RadioTest {
 
     @Test
     public void setPrevVolume() {
-        Radio rad = new Radio(0, 9, 0);
+        Radio rad = new Radio(9);
 
+        rad.currentVolume = 0;
         rad.reduceVolume();
 
         Assertions.assertEquals(0, rad.getCurrentVolume());
@@ -41,7 +45,7 @@ public class RadioTest {
 
     @Test
     public void setNextStation() {
-        Radio rad = new Radio(0, 9, 7);
+        Radio rad = new Radio(9);
 
         rad.currentStation = 1;
         rad.next();
@@ -51,7 +55,7 @@ public class RadioTest {
 
     @Test
     public void setPrevStation() {
-        Radio rad = new Radio(0, 9, 7);
+        Radio rad = new Radio(9);
 
         rad.currentStation = 5;
         rad.prev();
@@ -61,7 +65,7 @@ public class RadioTest {
 
     @Test
     public void setStAfter9() {
-        Radio rad = new Radio(0, 9, 7);
+        Radio rad = new Radio(9);
 
         rad.currentStation = 9;
         rad.next();
@@ -71,7 +75,7 @@ public class RadioTest {
 
     @Test
     public void setStPrev0() {
-        Radio rad = new Radio(0, 9, 7);
+        Radio rad = new Radio(9);
 
         rad.currentStation = 0;
         rad.prev();
