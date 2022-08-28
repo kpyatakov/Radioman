@@ -1,17 +1,19 @@
 public class Radio {
 
-    public int minStation = 0;
-    public int maxStation = 9;
-    public int currentStation;
-    public int currentVolume;
-    public int maxVolume = 100;
-    public int minVolume = 0;
+    protected int minStation = 0;
+    protected int maxStation = 9;
+    protected int currentStation;
+    protected int currentVolume;
+    protected int maxVolume = 100;
+    protected int minVolume = 0;
+    protected int stationAmount;
 
     public Radio() {
+        maxStation = 9;
     }
 
-    public Radio(int maxStation) {
-        this.maxStation = maxStation;
+    public Radio(int stationAmount) {
+        this.stationAmount = stationAmount;
     }
 
     public int getCurrentVolume() {
